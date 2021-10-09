@@ -21,16 +21,16 @@
 *All physical file type entities should be placed alongside a metadata file that persists all references to its attributes and info, when an entity links to another, it should use its UID for virtual path lookup*
 
 ### Base Types		
-- [UID] extends
-- id: string
+- [UID]
+	- id: string
 
 - [Entity] extends [UID]
-- filePath: string
-- fileName: string
-- isPhysicalFile: bool
-- entityName: string
-- toMeta() (abstract) -> saves all attributes to plain text meta file, when a attribute is another [Entity], save its UID, interacts with [FileSystem]
-- fromMeta() (abstract) -> reads all attributes from plain text meta file and returns a runtime [Entity], when a attribute is a UID, return its fromMeta() method, interacts with [FileSystem]
+	- filePath: string
+	- fileName: string
+	- isPhysicalFile: bool
+	- entityName: string
+	- toMeta() (abstract) -> saves all attributes to plain text meta file, when a attribute is another [Entity], save its UID, interacts with [FileSystem]
+	- fromMeta() (abstract) -> reads all attributes from plain text meta file and returns a runtime [Entity], when a attribute is a UID, return its fromMeta() method, interacts with [FileSystem]
 		
 ### Users
 - [APIConsumer] extends [Entity]
@@ -52,7 +52,7 @@
 
 - [FileSystem]
 	- getEntity([UID]):[Entity]
-	- setEntity([Entity]): boolean
+	- setEntity([Entity]):boolean
 
 - [LoggingSystem]
 	- logs events into a plaintext file 
